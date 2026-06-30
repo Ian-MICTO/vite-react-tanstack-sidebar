@@ -1,15 +1,22 @@
 import * as React from 'react'
-import { Outlet, createRootRoute } from '@tanstack/react-router'
+import { Outlet, createRootRoute, createRootRouteWithContext } from '@tanstack/react-router'
+import type { QueryClient } from '@tanstack/react-query'
+import { Tooltip, TooltipProvider } from '@/components/ui/tooltip';
+import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
-export const Route = createRootRoute({
-  component: RootComponent,
-})
-
-function RootComponent() {
-  return (
-    <React.Fragment>
-      <div>Hello "__root"!</div>
-      <Outlet />
-    </React.Fragment>
-  )
+interface RouterContext {
+  queryClient: QueryClient;
 }
+
+export const Route = createRootRouteWithContext<RouterContext>()({
+  component: () => (
+    <div>
+      <TooltipProvider>
+        <Tooltip>
+          <Outlet />
+        </Tooltip>
+        <TanStackRouterDevtools />
+      </TooltipProvider>
+    </div>
+  )
+})
