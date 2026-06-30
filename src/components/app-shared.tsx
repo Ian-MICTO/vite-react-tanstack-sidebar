@@ -25,6 +25,7 @@ export const navGroups: SidebarNavGroup[] = [
                     <LayoutGridIcon
                     />
                 ),
+                isActive: false,
             },
             {
                 title: "Analytics",
@@ -33,6 +34,7 @@ export const navGroups: SidebarNavGroup[] = [
                     <BarChart3Icon
                     />
                 ),
+                isActive: false,
             },
             {
                 title: "Projects",
@@ -41,6 +43,7 @@ export const navGroups: SidebarNavGroup[] = [
                     <BriefcaseIcon
                     />
                 ),
+                isActive: false,
             },
         ],
     },
@@ -104,6 +107,7 @@ export const footerNavLinks: SidebarNavItem[] = [
             <HelpCircleIcon
             />
         ),
+        isActive: false,
     },
     {
         title: "Documentation",
@@ -112,6 +116,7 @@ export const footerNavLinks: SidebarNavItem[] = [
             <BookOpenIcon
             />
         ),
+        isActive: false,
     },
 ];
 

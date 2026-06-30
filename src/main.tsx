@@ -4,6 +4,7 @@ import './index.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { routeTree } from './routeTree.gen'
 import { createRouter, RouterProvider } from '@tanstack/react-router'
+import type { BreadCrumbItem } from './types/breadcrumb'
 
 const queryClient = new QueryClient()
 const router = createRouter({
@@ -17,6 +18,10 @@ const router = createRouter({
 declare module '@tanstack/react-router' {
   export interface Register {
     router: typeof router
+  }
+
+  interface StaticDataRouteOption {
+    breadcrumb?: BreadCrumbItem
   }
 }
 
