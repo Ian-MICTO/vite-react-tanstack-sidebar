@@ -1,64 +1,32 @@
-import type { ReactNode } from "react";
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Link, useMatches } from "@tanstack/react-router";
-import React from "react";
-import type { BreadCrumbItem } from "@/types/breadcrumb";
+import { useCurrentPath } from '@/hooks/use-current-path'
+import { Link, useMatches } from '@tanstack/react-router'
 
-/** Current page segment shown in the header — pass a nav item or `{ title, icon? }`. */
-// export type AppBreadcrumbPage = {
-//     title: string;
-//     icon?: ReactNode;
-// };
-
-export function AppBreadcrumbs({ breadcrumbs }: { breadcrumbs?: string }) {
+export function AppBreadcrumbs() {
+    // Get all active route matches
+    const { breadcrumbs } = useCurrentPath();
+    console.log(breadcrumbs);
 
     return (
-        <Breadcrumb>
-            <BreadcrumbList>
-                <BreadcrumbItem>
-                    <BreadcrumbLink asChild>
-                        <Link to="/">Home</Link>
-                    </BreadcrumbLink>
-                </BreadcrumbItem>
-                {breadcrumbMatches.map((match, index) => {
-                    const isLast = index === breadcrumbMatches.length - 1
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-gray-600 my-4">
+            {breadcrumbs.map((crumb, index) => {
+                const isLast = index === breadcrumbs.length - 1
 
-                    const staticLabel = match.staticData?.breadcrumb?.title
-
-                    const fallbackLabel = match.pathname
-                        .split('/')
-                        .pop()
-                        ?.replace(/[-_]/g, ' ')
-                        .replace(/\b\w/g, (char) => char.toUpperCase())
-
-                    const label = staticLabel || fallbackLabel
-
-                    return (
-                        <React.Fragment key={match.id}>
-                            <BreadcrumbSeparator />
-                            <BreadcrumbItem>
-                                {isLast ? (<BreadcrumbPage>{label}</BreadcrumbPage>
-                                ) : (
-                                    <BreadcrumbLink asChild>
-                                        <Link to={match.pathname}>{label}</Link>
-                                    </BreadcrumbLink>
-                                )}
-                            </BreadcrumbItem>
-                        </React.Fragment>
-                    )
-                })}
-                {/* <BreadcrumbPage className="flex items-center gap-2 [&>svg]:size-3.5">
-                        {page.icon}
-                        {page.title}
-                    </BreadcrumbPage> */}
-            </BreadcrumbList>
-        </Breadcrumb>
-    );
+                return (
+                    <>
+                        <div key={crumb.path} className="flex items-center gap-2">
+                            {index > 0 && <span className="text-gray-400">/</span>}
+                            {isLast ? (
+                                <span className="font-semibold text-gray-900">{crumb.title}</span>
+                            ) : (
+                                <Link to={crumb.path} className="hover:underline hover:text-blue-600">
+                                    {crumb.title}
+                                </Link>
+                            )}
+                        </div>
+                        Test
+                    </>
+                )
+            })}
+        </nav>
+    )
 }

@@ -13,7 +13,6 @@ import { useCurrentPath } from "@/hooks/use-current-path";
 const activeItem = navLinks.find((item) => item.isActive);
 
 export function AppHeader() {
-    const { currentUrl } = useCurrentPath();
     return (
         <header
             className={cn(
@@ -28,7 +27,7 @@ export function AppHeader() {
                     className="mr-2 h-4 data-[orientation=vertical]:self-center"
                     orientation="vertical"
                 />
-                <AppBreadcrumbs breadcrumbs={currentUrl} />
+                <AppBreadcrumbs />
             </div>
             <div className="flex items-center gap-3">
                 <Button size="icon-sm" variant="outline">

@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { Outlet, createRootRoute, createRootRouteWithContext } from '@tanstack/react-router'
+import { Outlet, createRootRouteWithContext } from '@tanstack/react-router'
 import type { QueryClient } from '@tanstack/react-query'
 import { Tooltip, TooltipProvider } from '@/components/ui/tooltip';
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
