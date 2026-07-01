@@ -15,6 +15,9 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { UserIcon, SettingsIcon, CreditCardIcon, LogOutIcon } from "lucide-react";
+import { Button } from "./ui/button";
+import { useLogout } from "@/features/auth/auth-hooks";
+import { useRouter } from "@tanstack/react-router";
 
 const user = {
     name: "Shaban Haider",
@@ -23,6 +26,19 @@ const user = {
 };
 
 export function NavUser() {
+    const logout = useLogout(); // 2. Call the hook at the top level
+    const router = useRouter(); // 3. Get the router instance
+
+    const handleLogout = async () => {
+        // Run your logout logic (clearing localStorage, tokens, etc.)
+        logout();
+
+        // Force TanStack Router to re-evaluate 'beforeLoad' guards
+        // and optionally push them to the login page safely
+        await router.invalidate();
+        router.navigate({ to: "/login" });
+    };
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -74,9 +90,10 @@ export function NavUser() {
                         className="w-full cursor-pointer"
                         variant="destructive"
                     >
-                        <LogOutIcon
-                        />
-                        Log out
+                        <Button onClick={handleLogout}>
+                            <LogOutIcon />
+                            Log out
+                        </Button>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>

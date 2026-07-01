@@ -1,14 +1,12 @@
+import { useIsAuthenticated } from '@/features/auth/auth-hooks'
+import Login from '@/features/auth/pages/login'
 import { createFileRoute, redirect } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/_guest')({
   beforeLoad: () => {
-    if (true) {
+    if (useIsAuthenticated()) {
       throw redirect({ to: '/dashboard' })
     }
   },
-  component: RouteComponent,
+  component: Login,
 })
-
-function RouteComponent() {
-  return <div>Hello "/_guest"!</div>
-}
