@@ -19,6 +19,7 @@ import { useCurrentPath } from "@/hooks/use-current-path";
 
 export function NavGroup({ label, items }: SidebarNavGroup) {
     const { isCurrentUrl } = useCurrentPath();
+    console.log(isCurrentUrl)
 
     return (
         <SidebarGroup>
