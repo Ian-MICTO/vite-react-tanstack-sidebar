@@ -1,5 +1,5 @@
 import type { BreadCrumbItem } from "@/types/breadcrumb";
-import { useLocation, useMatches, type LinkOptions } from "@tanstack/react-router";
+import { useLocation, useMatches } from "@tanstack/react-router";
 
 export type IsCurrentUrlFn = (
     urlToCheck: string,

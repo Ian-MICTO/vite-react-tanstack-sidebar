@@ -1,5 +1,5 @@
 import { useCurrentPath } from '@/hooks/use-current-path'
-import { Link, useMatches } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 
 export function AppBreadcrumbs() {
     // Get all active route matches
