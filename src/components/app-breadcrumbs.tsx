@@ -4,13 +4,12 @@ import { Link, useMatches } from '@tanstack/react-router'
 export function AppBreadcrumbs() {
     // Get all active route matches
     const { breadcrumbs } = useCurrentPath();
-    console.log(breadcrumbs);
+    console.log("breadcrumbs", breadcrumbs);
 
     return (
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-gray-600 my-4">
             {breadcrumbs.map((crumb, index) => {
                 const isLast = index === breadcrumbs.length - 1
-
                 return (
                     <>
                         <div key={crumb.path} className="flex items-center gap-2">
@@ -23,7 +22,7 @@ export function AppBreadcrumbs() {
                                 </Link>
                             )}
                         </div>
-                        Test
+
                     </>
                 )
             })}

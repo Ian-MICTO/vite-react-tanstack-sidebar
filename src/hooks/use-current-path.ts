@@ -1,4 +1,3 @@
-import { Breadcrumb } from "@/components/ui/breadcrumb";
 import type { BreadCrumbItem } from "@/types/breadcrumb";
 import { useLocation, useMatches, type LinkOptions } from "@tanstack/react-router";
 

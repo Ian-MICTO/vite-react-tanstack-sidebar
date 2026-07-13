@@ -15,6 +15,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { UserIcon, SettingsIcon, CreditCardIcon, LogOutIcon } from "lucide-react";
+import { useNavigate } from "@tanstack/react-router";
 
 const user = {
     name: "Shaban Haider",
@@ -23,6 +24,10 @@ const user = {
 };
 
 export function NavUser() {
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        navigate({ to: "/login" });
+    }
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -76,7 +81,7 @@ export function NavUser() {
                     >
                         <LogOutIcon
                         />
-                        Log out
+                        <button onClick={handleLogout}>Log out</button>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>
