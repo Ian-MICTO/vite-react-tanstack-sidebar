@@ -17,20 +17,19 @@ import type { SidebarNavGroup } from "@/types/navigation";
 import { ChevronRightIcon } from "lucide-react";
 // import { useCurrentPath } from "@/hooks/use-current-path";
 import { useMatchRoute } from "@tanstack/react-router";
+import { useCurrentPath } from "@/hooks/use-current-path";
 
 export function NavGroup({ label, items }: SidebarNavGroup) {
-    // const { isCurrentUrl } = useCurrentPath();
-    // console.log(isCurrentUrl)
-    const matchRoute = useMatchRoute();
+    const { isCurrentPath } = useCurrentPath();
 
     return (
         <SidebarGroup>
             {label && <SidebarGroupLabel>{label}</SidebarGroupLabel>}
             <SidebarMenu>
                 {items.map((item) => {
-                    const isItemActive = item.path ? !!matchRoute({ to: item.path, fuzzy: true }) : false;
+                    const isItemActive = item.path ? !!isCurrentPath(item.path, true) : false;
                     const isSubItemActive = item.subItems?.some(sub =>
-                        sub.path ? !!matchRoute({ to: sub.path }) : false
+                        sub.path ? !!isCurrentPath(sub.path) : false
                     );
                     return (
                         <Collapsible
@@ -57,7 +56,7 @@ export function NavGroup({ label, items }: SidebarNavGroup) {
                                             <SidebarMenuSub>
                                                 {item.subItems?.map((subItem) => {
                                                     const isSubActive = subItem.path
-                                                        ? !!matchRoute({ to: subItem.path })
+                                                        ? !!isCurrentPath(subItem.path)
                                                         : false;
                                                     return (
                                                         <SidebarMenuSubItem key={subItem.title}>
