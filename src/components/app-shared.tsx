@@ -1,18 +1,6 @@
-import type { ReactNode } from "react";
+
 import { LayoutGridIcon, BarChart3Icon, BriefcaseIcon, UsersIcon, PlugIcon, KeyRoundIcon, SettingsIcon, CreditCardIcon, HelpCircleIcon, BookOpenIcon } from "lucide-react";
-
-export type SidebarNavItem = {
-    title: string;
-    path?: string;
-    icon?: ReactNode;
-    isActive?: boolean;
-    subItems?: SidebarNavItem[];
-};
-
-export type SidebarNavGroup = {
-    label?: string;
-    items: SidebarNavItem[];
-};
+import type { SidebarNavGroup, SidebarNavItem } from "@/types/navigation";
 
 export const navGroups: SidebarNavGroup[] = [
     {

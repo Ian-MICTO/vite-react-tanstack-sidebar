@@ -9,6 +9,7 @@ export function DashboardSkeleton() {
             )}
         >
             <div />
+            {/* <img src="https://github.com/Ian-MICTO/images-general-use-repo/blob/main/images-test/gojo.jpg?raw=true" /> */}
             <div />
             <div />
             <div />

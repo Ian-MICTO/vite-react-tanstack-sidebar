@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { UserIcon, SettingsIcon, CreditCardIcon, LogOutIcon } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
+import { Button } from "./ui/button";
 
 const user = {
     name: "Shaban Haider",
@@ -46,7 +47,7 @@ export function NavUser() {
                         <div>
                             <span className="font-medium text-foreground">{user.name}</span>{" "}
                             <br />
-                            <div className="max-w-full overflow-hidden overflow-ellipsis whitespace-nowrap text-muted-foreground text-xs">
+                            <div className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap text-muted-foreground text-xs">
                                 {user.email}
                             </div>
                         </div>
@@ -76,12 +77,12 @@ export function NavUser() {
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                     <DropdownMenuItem
+                        onClick={handleLogout}
                         className="w-full cursor-pointer"
                         variant="destructive"
                     >
-                        <LogOutIcon
-                        />
-                        <button onClick={handleLogout}>Log out</button>
+                        <LogOutIcon />
+                        Log out
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>

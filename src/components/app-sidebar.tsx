@@ -46,8 +46,8 @@ export function AppSidebar() {
                         <SidebarMenuItem key={item.title}>
                             <SidebarMenuButton
                                 asChild
+                                isActive
                                 className="text-muted-foreground"
-                                isActive={item.isActive}
                                 size="sm"
                             >
                                 <a href={item.path}>

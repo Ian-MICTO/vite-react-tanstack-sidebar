@@ -7,8 +7,6 @@ import { navLinks } from "@/components/app-shared";
 import { CustomSidebarTrigger } from "@/components/custom-sidebar-trigger";
 import { NavUser } from "@/components/nav-user";
 import { SendIcon, BellIcon } from "lucide-react";
-import type { BreadCrumbItem } from "@/types/breadcrumb";
-import { useCurrentPath } from "@/hooks/use-current-path";
 
 const activeItem = navLinks.find((item) => item.isActive);
 

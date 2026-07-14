@@ -8,7 +8,7 @@ function Login() {
     const [password, setPassword] = useState('password123')
     const [error, setError] = useState('')
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault()
         if (email === 'demo@example.com' && password === 'password123') {
             // auth.login(email, password)
