@@ -15,8 +15,6 @@ import {
 } from "@/components/ui/sidebar";
 import type { SidebarNavGroup } from "@/types/navigation";
 import { ChevronRightIcon } from "lucide-react";
-// import { useCurrentPath } from "@/hooks/use-current-path";
-import { useMatchRoute } from "@tanstack/react-router";
 import { useCurrentPath } from "@/hooks/use-current-path";
 
 export function NavGroup({ label, items }: SidebarNavGroup) {
